@@ -1,0 +1,18 @@
+.field-container {
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 2px 2px black;
+    background: white;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.field-container > span {
+    color: black;
+    font-size: 6px;
+}
+.part {
+    background: darkmagenta;
+    width: 10px;
+    height: 10px;
+}
