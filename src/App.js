@@ -5,22 +5,31 @@ import Snake from './Snake';
 import Arrow from './Arrow';
 function App() {
   const [snake, setSnake] = useState([])
+  const [length, setLength] = useState(3)
   const [moveIndex, setMoveIndex] = useState(1)
   const board = []
-  for ( let i = 0; i<256; i++) {
-    let startIndex = moveIndex;
-    let endIndex = moveIndex + 3  
-    i> startIndex && i<= endIndex ?
-        board.push({index: i+1, b: true}) :
-      board.push({index: i+1, b: false})
+  for ( let i = 1; i<=256; i++) {
+    let startIndex;
+    let endIndex;
+    startIndex = moveIndex;
+    
+    startIndex <= 254 ? endIndex = startIndex +2 :
+    endIndex = startIndex -254
+    console.log(startIndex);
+    console.log(endIndex);
+    
+    // eslint-disable-next-line no-unused-expressions
+    startIndex > endIndex ? i>= startIndex && i< (startIndex + length) && board.push({index: i, b: true}) : i>=startIndex && i<= endIndex
+    ? 
+        board.push({index: i, b: true}) :
+      board.push({index: i, b: false})
   }
 
-  console.log(moveIndex)
   useEffect(() => {
     setSnake(board)
     console.log(snake)
     const timer = setTimeout(()=> {
-      moveIndex <=256 ?
+      moveIndex <256 && moveIndex > 0?
       setMoveIndex(moveIndex +1) :
       setMoveIndex(1)
       // const dupa = [];
